@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'rest_framework',  # ⬅️ ДОБАВЬТЕ ЗАПЯТУЮ ЗДЕСЬ!
+    'rest_framework', 
     'radiostations',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # ⬅️ ДОБАВЬТЕ ЗАПЯТУЮ ЗДЕСЬ!
+    'corsheaders.middleware.CorsMiddleware',  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,8 +54,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # ⬅️ React обычно на 3000 порту!
-    "http://127.0.0.1:3000",  # ⬅️ React обычно на 3000 порту!
+    "http://localhost:3000",  # React 
+    "http://127.0.0.1:3000",  # React 
     "http://localhost:8000",  # Django
     "http://127.0.0.1:8000",  # Django
 ]
