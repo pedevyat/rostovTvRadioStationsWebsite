@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i0bajcodnxj%+r6ulwhj6xf^12yz9pzvkbte0#+680nfuret((
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',  # ⬅️ ДОБАВЬТЕ ЗАПЯТУЮ ЗДЕСЬ!
+    'radiostations',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # ⬅️ ДОБАВЬТЕ ЗАПЯТУЮ ЗДЕСЬ!
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,6 +52,21 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # ⬅️ React обычно на 3000 порту!
+    "http://127.0.0.1:3000",  # ⬅️ React обычно на 3000 порту!
+    "http://localhost:8000",  # Django
+    "http://127.0.0.1:8000",  # Django
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
 
 ROOT_URLCONF = 'backend.urls'
 

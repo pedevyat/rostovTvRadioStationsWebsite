@@ -1,6 +1,6 @@
 from django.db import models
 
-class User(models.Model):
+class Radiodata(models.Model):
     freq = models.DecimalField(
         max_digits=10,
         decimal_places=3, # цифр после запятой
