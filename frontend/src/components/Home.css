@@ -94,10 +94,46 @@
   .main-content {
     flex: 1;
     padding: 2rem;
-    max-width: 1200px;
+    max-width: 1400px; 
     margin: 0 auto;
     width: 100%;
-  }
+    background: white;
+}
+
+/* Контейнер для двух колонок */
+.content-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Левая колонка шире */
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Левая колонка - последние изменения */
+.changes-column {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+/* Правая колонка - случайная станция */
+.random-column {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    position: sticky;
+    top: 2rem; /* Прилипает при прокрутке */
+}
+
+/* Заголовки секций */
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 0.5rem;
+}
   
   /* Секция изменений */
   .changes-list {
@@ -124,6 +160,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    flex: 1;
   }
   
   .station-name {
@@ -139,12 +176,20 @@
   .change-details {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Выравниваем по центру */
     gap: 0.5rem;
-    color: #6c757d;
+    flex: 1;
+    text-align: center; /* Текст по центру */
+  }
+  
+  .city {
+    font-weight: 500;
+    font-size: 1rem;
   }
   
   .update-time {
     font-size: 0.9rem;
+    color: #6c757d;
   }
   
   .status {
@@ -152,6 +197,8 @@
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: bold;
+    min-width: 100px;
+    text-align: center;
   }
   
   .status.working {
@@ -163,35 +210,39 @@
     background: #f8d7da;
     color: #721c24;
   }
-  
   /* Случайная станция */
-  .random-station {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
-  }
-  
-  .station-card {
+  .random-station-card {
     background: white;
     border: 1px solid #e9ecef;
     border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    max-width: 400px;
-    width: 100%;
+    padding: 1.5rem;
     text-align: center;
-  }
-  
-  .station-details {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.station-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #667eea;
+}
+
+.station-details {
     text-align: left;
-    margin: 1.5rem 0;
-  }
-  
-  .station-details p {
+    margin: 1rem 0;
+}
+
+.station-details p {
     margin: 0.5rem 0;
-  }
-  
-  .listen-button {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.station-details strong {
+    color: #333;
+}
+
+.listen-button {
     background: #28a745;
     color: white;
     border: none;
@@ -200,13 +251,15 @@
     cursor: pointer;
     font-size: 1rem;
     transition: background 0.3s ease;
-  }
-  
-  .listen-button:hover {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.listen-button:hover {
     background: #218838;
-  }
-  
-  .new-random-button {
+}
+
+.new-random-button {
     background: #6c757d;
     color: white;
     border: none;
@@ -215,11 +268,13 @@
     cursor: pointer;
     font-size: 1rem;
     transition: background 0.3s ease;
-  }
-  
-  .new-random-button:hover {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.new-random-button:hover {
     background: #545b62;
-  }
+}
   
   /* Футер с соцсетями */
   .footer {
@@ -294,5 +349,18 @@
     
     .title {
       font-size: 2rem;
+    }
+
+    .content-columns {
+        grid-template-columns: 1fr; /* На мобильных одна колонка */
+        gap: 1.5rem;
+    }
+    
+    .random-column {
+        position: static; /* Убираем sticky на мобильных */
+    }
+    
+    .main-content {
+        padding: 1rem;
     }
   }

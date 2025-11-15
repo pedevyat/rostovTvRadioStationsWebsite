@@ -24,7 +24,6 @@ def api_root(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/radiostations/', 
-         include('radiostations.urls')),  # Подключаем URLs приложения
+    path('api/', include('radiostations.urls')),  # Подключаем URLs приложения
     path('', api_root)
 ]

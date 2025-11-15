@@ -82,9 +82,9 @@ const HomePage = () => {
             
 
             <main className="main-content">
-                {activeTab === 'changes' && (
-                    <section className="changes-section">
-                        <h2>Последние изменения:</h2>
+                <div className="content-columns">
+                    <div className="changes-column">
+                        <h2 className="section-title">Последние изменения:</h2>
                         <div className='changes-list'>
                             {recentChanges.map(station => (
                                 <div key={station.id} className='change-item'>
@@ -104,11 +104,11 @@ const HomePage = () => {
                                 </div>
                             ))}
                         </div>
-                    </section>
-                )}
-                {activeTab === 'random' && (
-                    <section className='random-section'>
-                        <h2>Случайная станция:</h2>
+                    </div>
+                
+                
+                    <div className="random-column">
+                        <h2 className="section-title">Случайная станция:</h2>
                         {randomStation && (
                             <div className='random-station'>
                                 <div className='station-card'>
@@ -123,9 +123,9 @@ const HomePage = () => {
                         <button className='new-random-button' onClick={handleRandomStation}>
                             Другая станция
                         </button>
-                    </section>
+                    </div>
                     
-                )}
+                </div>
                 {/* */}
             </main>
             <footer className='footer'>
