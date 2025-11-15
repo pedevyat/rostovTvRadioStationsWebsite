@@ -18,6 +18,7 @@ const HomePage = () => {
             // получение последнего изменения
             const changesResponse = await radioAPI.getStations();
             const stations = changesResponse.data;
+            //console.log('Данные от API:', stations[22]);
 
             // сортировка по дате. берем 5 свежих
             const sortedByDate = [...stations].sort((a, b) =>
@@ -32,6 +33,36 @@ const HomePage = () => {
         } catch (err) {
             console.error('Error fetching data:', err);
             setLoading(false);
+        }
+    };
+
+    const getStatusClass = (status) => {
+        switch (status) {
+            case 'working':
+                return 'working';
+            case 'temporary_off':
+                return 'temporary-off';
+            case 'planned':
+                return 'planned';
+            case 'disabled':
+                return 'disabled';
+            default:
+                return 'disabled';
+        }
+    };
+
+    const getStatusText = (status) => {
+        switch (status) {
+            case 'working':
+                return 'В эфире';
+            case 'temporary_off':
+                return 'Временно не работает';
+            case 'planned':
+                return 'План';
+            case 'disabled':
+                return 'Отключен';
+            default:
+                return 'Отключен';
         }
     };
 
@@ -53,6 +84,8 @@ const HomePage = () => {
     if (loading) {
         return <div className='loading'>Загрузка...</div>
     }
+
+
 
     return (
         <div className='home-page'>
@@ -98,8 +131,8 @@ const HomePage = () => {
                                             Обновлено: {new Date(station.updated_at).toLocaleDateString('ru-RU')}
                                         </span>
                                     </div>
-                                    <div className={`status ${station.is_works ? 'working' : 'not-working'}`}>
-                                        {station.is_works ? 'В эфире' : 'Не работает'}
+                                    <div className={`status ${getStatusClass(station.is_works)}`}>
+                                        {getStatusText(station.is_works)}
                                     </div>
                                 </div>
                             ))}
