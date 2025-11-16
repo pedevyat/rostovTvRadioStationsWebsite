@@ -11,16 +11,17 @@ class RadiodataAdmin(admin.ModelAdmin):
         'trp', 
         'is_works', 
         'is_rds',
+        'online',
         'updated_at'
     ]
-    list_filter = ['city', 'is_works', 'is_rds']
+    list_filter = ['city', 'is_works', 'is_rds', 'online']
     search_fields = ['station', 'local_station','city', 'place']
     list_editable = ['is_works', 'is_rds']
     readonly_fields = ['created_at', 'updated_at']
     
     fieldsets = (
         ('Главная информация', {
-            'fields': ('station', 'local_station', 'freq', 'city', 'place')
+            'fields': ('station', 'local_station', 'freq', 'city', 'place', 'online')
         }),
         ('Технические параметры', {
             'fields': ('trp', 'is_works', 'is_rds')

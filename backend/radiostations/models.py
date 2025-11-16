@@ -68,6 +68,12 @@ class Radiodata(models.Model):
         verbose_name='Дата обновления'
     )
 
+    online = models.CharField(
+        max_length=1000,
+        blank=True,
+        null=True,
+    )
+
     def __str__(self):
         return f"{self.station} ({self.freq} МГц) - {self.city}"
 
