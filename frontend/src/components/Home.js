@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { radioAPI } from '../services/api';
 import './Home.css';
 import { ReactComponent as TgLogo } from '../images/tg_logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     const [recentChanges, setRecentChanges] = useState([]);
     const [randomStation, setRandomStation] = useState(null);
     const [activeTab, setActiveTab] = useState('changes');
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchData();        
@@ -95,7 +97,7 @@ const HomePage = () => {
                     <p className='subtitle'>Актуальный список частот по области</p>
                 </div>
                 <nav className='tabs'>
-                <button className='tab-button'>
+                <button className='tab-button' onClick={() => navigate('/cities')}>
                     Города
                 </button>
                 <button className='tab-button'>
