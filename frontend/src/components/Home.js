@@ -22,10 +22,10 @@ const HomePage = () => {
             const stations = changesResponse.data;
             //console.log('Данные от API:', stations[22]);
 
-            // сортировка по дате. берем 5 свежих
+            // сортировка по дате. берем 10 свежих
             const sortedByDate = [...stations].sort((a, b) =>
                 new Date(b.updated_at) - new Date(a.updated_at))
-                .slice(0, 5);
+                .slice(0, 10);
             setRecentChanges(sortedByDate);
 
             // random station
@@ -91,30 +91,7 @@ const HomePage = () => {
 
     return (
         <div className='home-page'>
-            <header className='header'>
-                <div className='header-content'>
-                    <h1 className='title'>Радио Ростовской области</h1>
-                    <p className='subtitle'>Актуальный список частот по области</p>
-                </div>
-                <nav className='tabs'>
-                <button className='tab-button' onClick={() => navigate('/cities')}>
-                    Города
-                </button>
-                <button className='tab-button'>
-                    Станции
-                </button>
-                <button className='tab-button'>
-                    Список станций
-                </button>
-                <button className='tab-button'>
-                    Слушать онлайн
-                </button>
-                <button className='tab-button'>
-                    О сайте
-                </button>
-            </nav>
-            </header>
-            
+        
 
             <main className="main-content">
                 <div className="content-columns">
@@ -163,21 +140,7 @@ const HomePage = () => {
                 </div>
                 {/* */}
             </main>
-            <footer className='footer'>
-                <div className='social-links'>
-                    <div className="social-icons">
-                        {socialLinks.map(social => (
-                            <a key={social.name} href={social.url}>
-                                <social.icon className="social-icon" />
-                                <span>{social.name}</span>
-                            </a>
-                    ))}
-                </div>
-            </div>
-            <div className="footer-info">
-                <p>© 2025 Konstantin P</p>
-            </div>
-            </footer>
+            
         </div>
     );
 };
