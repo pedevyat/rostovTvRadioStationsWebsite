@@ -4,17 +4,17 @@ import logo from './logo.svg';
 import './App.css';
 import Layout from './components/Layout';
 import Home from './components/Home';
-import Cities from './components/Cities'
+import Cities from './components/Cities';
 
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cities" elememt={<Cities />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='cities' element={<Cities />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

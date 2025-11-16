@@ -4,7 +4,7 @@ import './Home.css';
 import { ReactComponent as TgLogo } from '../images/tg_logo.svg';
 import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
+const Home = () => {
     const [recentChanges, setRecentChanges] = useState([]);
     const [randomStation, setRandomStation] = useState(null);
     const [activeTab, setActiveTab] = useState('changes');
@@ -170,6 +170,6 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default Home;
 
 

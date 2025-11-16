@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import './Layout.css';
 import { ReactComponent as TgLogo } from '../images/tg_logo.svg';
 
@@ -53,7 +53,7 @@ const Layout = ({children}) => {
             </header>
 
             <main className="main-content">
-                {children}
+                <Outlet />
             </main>
 
             <footer className='footer'>
