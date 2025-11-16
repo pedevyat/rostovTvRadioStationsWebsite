@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { radioAPI } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 import './Cities.css';
 
 const CititesPage = () => {
     const [cities, setCities] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeFilter, setActiveFilter] = useState('all');
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchCitiesData();
@@ -52,6 +54,23 @@ const CititesPage = () => {
         }
     };
 
+    const translateToEnglish = (city) => {
+        const translations = {
+            "Ростов-на-Дону": "rostov-on-don",
+            "Новочеркасск": "novocherkassk"
+        };
+        return translations[city] || city.toLowerCase().replace(/\s+/g, '-');
+    };
+
+    const handleCityClick = (city) => {
+        const engCity = translateToEnglish(city.name);
+        navigate(`/cities/${engCity}`, {
+            state: {city}
+        });
+    };
+
+    
+
     // Фильтрация городов
     const filteredCities = cities.filter(city => {
         if (activeFilter === 'active') {
@@ -76,7 +95,7 @@ const CititesPage = () => {
 
             <div className='cities-grid'>
                 {filteredCities.map((city, index) => (
-                    <div key={city.name} className='city-card'>
+                    <div key={city.name} className='city-card' onClick={() => handleCityClick(city)}>
                         <img
                             src={city.image}
                             alt={city.name}
