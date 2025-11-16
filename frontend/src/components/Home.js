@@ -9,10 +9,13 @@ const HomePage = () => {
     const [randomStation, setRandomStation] = useState(null);
     const [activeTab, setActiveTab] = useState('changes');
     const [loading, setLoading] = useState(true);
+    const [currentAudioUrl, setCurrentAudioUrl] = useState(null); // URL потока
+    const [currentStationName, setCurrentStationName] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchData();        
+        fetchData(); 
+        handleRandomStation();       
     }, []);
 
     const fetchData = async () => {
@@ -70,18 +73,23 @@ const HomePage = () => {
 
     const handleRandomStation = async () => {
         try {
+            
+            setCurrentAudioUrl(null);
+            setCurrentStationName('');
             const response = await radioAPI.getStations();
             const stations = response.data;
-            const randomIndex = Math.floor(Math.random() * stations.length);
-            setRandomStation(stations[randomIndex]);
+            const onlineStations = stations.filter(station => station.online != null); 
+            const randomIndex = Math.floor(Math.random() * onlineStations.length);
+            setRandomStation(onlineStations[randomIndex]);
         } catch(err) {
             console.error('Error fetching data:', err);
         }
     };
 
-    const socialLinks = [
-        {name: 'Telegram', url: 'https://t.me/radiornd', icon: TgLogo}
-    ];
+    const handleSetAudioStream = (station) => {
+        setCurrentAudioUrl(station.online);
+        setCurrentStationName(`${station.station} ${station.local_station || ''}`.trim());
+    }
 
     if (loading) {
         return <div className='loading'>Загрузка...</div>
@@ -124,9 +132,9 @@ const HomePage = () => {
                         {randomStation && (
                             <div className='random-station'>
                                 <div className='station-card'>
-                                    <h3>{randomStation.station}</h3>
+                                    <h3>{randomStation.station} {randomStation.local_station}</h3>
                                     <p><strong>{randomStation.city} {randomStation.freq}</strong></p>
-                                    <button className="listen-button">
+                                    <button className="listen-button" onClick={() => handleSetAudioStream(randomStation)}>
                                         Слушать
                                     </button>
                                 </div>
@@ -135,6 +143,23 @@ const HomePage = () => {
                         <button className='new-random-button' onClick={handleRandomStation}>
                             Другая станция
                         </button>
+
+                        {currentAudioUrl && (
+                            <div className="audio-player-container">
+                                <br></br>
+                                    <audio 
+                                        controls 
+                                        autoPlay 
+                                        className="browser-audio-player"
+                                    >
+                                        <source src={currentAudioUrl} type="audio/mpeg" />
+                                        <source src={currentAudioUrl} type="audio/aac" />
+                                        <source src={currentAudioUrl} type="audio/ogg" />
+                                        Ваш браузер не поддерживает аудиоплеер.
+                                    </audio>
+                               
+                            </div>
+                     )}            
                     </div>
                     
                 </div>
