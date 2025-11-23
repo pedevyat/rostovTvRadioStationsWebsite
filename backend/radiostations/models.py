@@ -72,6 +72,13 @@ class Radiodata(models.Model):
         max_length=1000,
         blank=True,
         null=True,
+        verbose_name="Онлайн"
+    )
+
+    detailed_information = models.TextField(
+        verbose_name="Детали",
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
