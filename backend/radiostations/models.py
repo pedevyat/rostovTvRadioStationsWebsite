@@ -58,6 +58,20 @@ class Radiodata(models.Model):
         verbose_name='Есть RDS?'
     )
 
+    asl = models.IntegerField(
+        #max_digits=4,
+        verbose_name="Высота над уровнем моря",
+        blank=True,
+        null=True
+    )
+
+    ant = models.IntegerField(
+        #max_digits=3,
+        verbose_name="Высота установки передатчика",
+        blank=True,
+        null=True
+    )
+
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата создания'
@@ -83,6 +97,24 @@ class Radiodata(models.Model):
 
     def __str__(self):
         return f"{self.station} ({self.freq} МГц) - {self.city}"
+    
+    def save(self, *args, **kwargs):
+        """Автоматически заполняем asl при сохранении"""
+        if not self.asl:  # Только если поле пустое
+            if self.city and "Ростов-на-Дону" in self.city:
+                if self.place and "ОРТПЦ" in self.place:
+                    self.asl = 80
+                elif self.place and "Текучёва" in self.place:
+                    self.asl = 82
+                elif self.place and "Каяни" in self.place:
+                    self.asl = 87
+                elif self.place and "Володарского" in self.place:
+                    self.asl = 87
+                elif self.place and "Театральный" in self.place:
+                    self.asl = 82
+    
+        super().save(*args, **kwargs)
+            
 
     class Meta:
         verbose_name = 'Данные радиостанции'

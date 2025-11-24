@@ -12,6 +12,8 @@ class RadiodataAdmin(admin.ModelAdmin):
         'is_works', 
         'is_rds',
         'online',
+        'asl',
+        'ant',
         'detailed_information',
         'updated_at'
     ]
@@ -22,10 +24,10 @@ class RadiodataAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Главная информация', {
-            'fields': ('station', 'local_station', 'freq', 'city', 'place', 'online', 'detailed_information')
+            'fields': ('station', 'local_station', 'freq', 'city', 'place', 'online', 'detailed_information', 'asl')
         }),
         ('Технические параметры', {
-            'fields': ('trp', 'is_works', 'is_rds')
+            'fields': ('trp', 'ant', 'is_works', 'is_rds')
         }),
         ('Даты', {
             'fields': ('created_at', 'updated_at'),
