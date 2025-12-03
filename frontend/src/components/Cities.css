@@ -77,13 +77,6 @@
     margin-bottom: 1rem;
 }
 
-.city-status {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
 
 .status-active {
     background: #d4edda;
@@ -193,4 +186,58 @@
 .stats-number {
     font-weight: bold;
     color: #667eea;
+}
+
+/* Добавьте эти стили в конец Cities.css */
+
+/* Контейнер для статусов станций */
+.station-status-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+/* Дополнительные статусы для радиостанций */
+.status-planned {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-temporary {
+    background: #ffeaa7;
+    color: #8a4b08;
+    border: 1px solid #fdcb6e;
+}
+
+/* Адаптация для карточек радиостанций */
+.city-card .city-stations {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.city-card .city-frequency {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+/* Бейдж на кубике станции */
+.city-card .city-badge {
+    background: rgba(86, 98, 246, 0.9);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Медиа-запросы для станций */
+@media (max-width: 768px) {
+    .station-status-container {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
 }

@@ -57,7 +57,8 @@ const CititesPage = () => {
     const translateToEnglish = (city) => {
         const translations = {
             "Ростов-на-Дону": "rostov-on-don",
-            "Новочеркасск": "novocherkassk"
+            "Новочеркасск": "novocherkassk",
+
         };
         return translations[city] || city.toLowerCase().replace(/\s+/g, '-');
     };
@@ -69,6 +70,15 @@ const CititesPage = () => {
         });
     };
 
+    function getStationText(count) {
+        if (count % 10 === 1 && count % 100 !== 11) {
+            return `${count} станция`;
+        } else if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) {
+            return `${count} станции`;
+        } else {
+            return `${count} станций`;
+        }
+    }
     
 
     // Фильтрация городов
@@ -108,8 +118,8 @@ const CititesPage = () => {
                         <div className='city-content'>
                             <h3 className='city-name'>{city.name}</h3>
                             <div className='city-stations'>
-                                {city.activeStations} станций<br></br>
-                                {city.plannedStations > 0 ? `${city.plannedStations} станций планируются` : ''} 
+                                {city.activeStations > 0 ? getStationText(city.activeStations) : 'Нет станций'}<br></br>
+                                {city.plannedStations > 0 ? `${getStationText(city.plannedStations)} планируются` : ''} 
                             </div>   
                         </div>
                     </div>   

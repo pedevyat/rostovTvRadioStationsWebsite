@@ -1,0 +1,254 @@
+/* components/Radiostations.css */
+.radiostations-page {
+    padding: 2rem 0;
+}
+
+.radiostations-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.radiostations-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.radiostations-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Контейнер для карточек станций */
+.stations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Стили для карточки станции */
+.station-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #eaeaea;
+}
+
+.station-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #667eea;
+}
+
+.station-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.station-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.station-cities-count {
+    background: #667eea;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.station-local {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    font-style: italic;
+}
+
+.station-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.status-badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-working {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-planned {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-disabled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-temporary {
+    background: #ffe5d0;
+    color: #8a4b08;
+}
+
+.station-cities {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.cities-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.cities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.city-tag {
+    background: #f8f9fa;
+    color: #495057;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    border: 1px solid #dee2e6;
+}
+
+.station-frequencies {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.frequencies-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.frequency-item {
+    display: inline-flex;
+    align-items: center;
+    background: #e9ecef;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.frequency-value {
+    font-weight: bold;
+    color: #667eea;
+    margin-right: 0.3rem;
+}
+
+.frequency-city {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.station-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.station-transmitters {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.view-details {
+    color: #667eea;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Анимация загрузки */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Статистика вверху */
+.stations-stats {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+    border: 1px solid #eaeaea;
+}
+
+.stats-number {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .stations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .radiostations-title {
+        font-size: 2rem;
+    }
+    
+    .station-name {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stations-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .station-card {
+        margin: 0 0.5rem;
+    }
+}

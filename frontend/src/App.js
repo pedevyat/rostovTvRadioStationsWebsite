@@ -5,6 +5,7 @@ import './App.css';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import Cities from './components/Cities';
+import Radiostations from './components/Radiostations';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='cities' element={<Cities />} />
+          <Route path='stations' element={<Radiostations />} />
         </Route>
       </Routes>
     </Router>

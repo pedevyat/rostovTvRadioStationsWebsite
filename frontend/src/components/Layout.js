@@ -35,6 +35,7 @@ const Layout = ({children}) => {
                         </button>
                         <button 
                             className='tab-button'
+                            onClick={() => navigate('/stations')}
                         >
                             Станции
                         </button>

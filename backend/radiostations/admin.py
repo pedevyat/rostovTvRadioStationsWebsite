@@ -11,10 +11,10 @@ class RadiodataAdmin(admin.ModelAdmin):
         'trp', 
         'is_works', 
         'is_rds',
-        'online',
+        'place',
         'asl',
         'ant',
-        'detailed_information',
+        'online',
         'updated_at'
     ]
     list_filter = ['city', 'is_works', 'is_rds', 'online', 'detailed_information']

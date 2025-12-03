@@ -100,20 +100,52 @@ class Radiodata(models.Model):
     
     def save(self, *args, **kwargs):
         """Автоматически заполняем asl при сохранении"""
-        if not self.asl:  # Только если поле пустое
-            if self.city and "Ростов-на-Дону" in self.city:
-                if self.place and "ОРТПЦ" in self.place:
-                    self.asl = 80
-                elif self.place and "Текучёва" in self.place:
-                    self.asl = 82
-                elif self.place and "Каяни" in self.place:
-                    self.asl = 87
-                elif self.place and "Володарского" in self.place:
-                    self.asl = 87
-                elif self.place and "Театральный" in self.place:
-                    self.asl = 82
+        if not self.asl and self.place:
+            self.asl = self.get_asl_by_location()
+            
     
         super().save(*args, **kwargs)
+
+    def get_asl_by_location(self):
+        "Определение высоты над уровнем моря"
+        location_asl_map = {
+            'Ростов-на-Дону': {
+                'ОРТПЦ': 82,
+                'Текучёва': 84,
+                'Каяни': 86,
+                'Володарского': 86,
+                'Театральный': 83,
+            },
+            'Азов': {
+                'Элеватор': 46,
+            },
+            'Таганрог': {
+                'Некрасовский': 31,
+                '7-й Новый переулок, 100-5': 63,
+                'РТС': 33,
+                'Кузробот': 34,
+                'Поляковское': 31,
+                '7-й Новый переулок, 108': 69
+            },
+            'Шахты': {
+                'РТС': 127
+            },
+            'Новошахтинск': {
+                'Харьковская': 179,
+            },
+            'Красный Сулин': {
+                'РТС': 160,
+            }
+            
+        }
+
+        city_map = location_asl_map.get(self.city, {})
+
+        for place_key, asl_value in city_map.items():
+            if place_key in self.place:
+                return asl_value
+            
+        
             
 
     class Meta:
