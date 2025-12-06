@@ -7,12 +7,15 @@ class Radiodata(models.Model):
         ('temporary_off', 'Временно не работает'),
         ('planned', 'Планируется'),
         ('disabled', 'Отключен'),
+        ('online', 'Онлайн')
     ]
 
     freq = models.DecimalField(
         max_digits=10,
         decimal_places=3, # цифр после запятой
-        verbose_name='МГц'
+        verbose_name='МГц',
+        blank=True,
+        null=True
     )
 
     station = models.CharField(
@@ -43,13 +46,15 @@ class Radiodata(models.Model):
     trp = models.DecimalField( # мощность (с РКН)
         max_digits=10,
         decimal_places=3,
-        verbose_name="Мощность"
+        verbose_name="Мощность",
+        blank=True,
+        null=True
     )
 
     is_works = models.CharField( # статус передатчика: работает/временно не работает/планируется/отключен
         max_length=20,
         choices=STATUS_CHOICES,
-        default='planned',
+        default='working',
         verbose_name='Статус передатчика'
     )
 

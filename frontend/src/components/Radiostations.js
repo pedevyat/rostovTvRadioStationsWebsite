@@ -26,7 +26,7 @@ const RadiostationsPage = () => {
                     stationsMap[stationName] = {
                         name: stationName,
                         stations: [],
-                        image: `/images/radio/${stationName.toLowerCase().replace(/\s+/g, '-')}.png`,
+                        image: `/images/radio/${stationName.toLowerCase().replace(/\s+/g, '-')}.jpg`,
                         activeStations: 0,
                         plannedStations: 0,
                         disabledStations: 0,
@@ -80,15 +80,6 @@ const RadiostationsPage = () => {
         }
     };
 
-    const getCityText = (count) => {
-        if (count % 10 === 1 && count % 100 !== 11) {
-            return `${count} город`;
-        } else if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) {
-            return `${count} города`;
-        } else {
-            return `${count} городов`;
-        }
-    };
 
     const translateToEnglish = (stationName) => {
         const translations = {
@@ -137,7 +128,7 @@ const RadiostationsPage = () => {
                             <h3 className='city-name'>{station.name}</h3>
                             
                             <div className='city-stations'>
-                                {station.activeStations > 0 ? getStationText(station.activeStations) : 'Нет активных передатчиков'}
+                                {station.activeStations > 0 ? getStationText(station.activeStations) : ''}
                             </div>
                             <div className='station-status-container'>
                                 {station.plannedStations > 0 && (

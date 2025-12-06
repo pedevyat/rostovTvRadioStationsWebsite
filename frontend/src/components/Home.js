@@ -51,6 +51,8 @@ const Home = () => {
                 return 'planned';
             case 'disabled':
                 return 'disabled';
+            case 'online':
+                return 'online';
             default:
                 return 'disabled';
         }
@@ -66,6 +68,8 @@ const Home = () => {
                 return 'План';
             case 'disabled':
                 return 'Отключен';
+            case 'online':
+                return 'Интернет-станция';
             default:
                 return 'Отключен';
         }

@@ -22,6 +22,7 @@ class RadiodataAdmin(admin.ModelAdmin):
     list_editable = ['is_works', 'is_rds']
     readonly_fields = ['created_at', 'updated_at']
     
+    
     fieldsets = (
         ('Главная информация', {
             'fields': ('station', 'local_station', 'freq', 'city', 'place', 'online', 'detailed_information', 'asl')
