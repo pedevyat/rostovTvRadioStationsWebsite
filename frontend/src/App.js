@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import Home from './components/Home';
 import Cities from './components/Cities';
 import Radiostations from './components/Radiostations';
+import About from './components/About';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='cities' element={<Cities />} />
           <Route path='stations' element={<Radiostations />} />
+          <Route path='about' element={<About />} />
         </Route>
       </Routes>
     </Router>

@@ -46,6 +46,7 @@ const Layout = ({children}) => {
                         </button>
                         <button 
                             className='tab-button'
+                            onClick={() => navigate('/about')}
                         >
                             О сайте
                         </button>                
