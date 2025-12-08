@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Cities from './components/Cities';
 import Radiostations from './components/Radiostations';
 import About from './components/About';
+import City from './components/City';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='cities' element={<Cities />} />
+          <Route path='cities/:cityName' element={<City />} />
           <Route path='stations' element={<Radiostations />} />
           <Route path='about' element={<About />} />
         </Route>

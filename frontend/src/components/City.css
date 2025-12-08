@@ -1,0 +1,369 @@
+.radio-table {
+    padding: 0%;
+    background: #f5f7fa;
+    min-height: 100vh;
+    width: 100%; 
+    overflow-x: auto;
+}
+
+/* Панель инструментов */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toolbar-left {
+    display: flex;
+    gap: 10px;
+}
+
+.search-toggle, .export-btn, .clear-filters {
+    padding: 8px 16px;
+    border: 2px solid #4a6fa5;
+    background: white;
+    color: #4a6fa5;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.search-toggle:hover, .export-btn:hover, .clear-filters:hover {
+    background: #4a6fa5;
+    color: white;
+}
+
+.search-toggle.active {
+    background: #4a6fa5;
+    color: white;
+}
+
+.stats {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Панель поиска */
+.search-panel {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-input {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 2px solid #e1e5eb;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: #4a6fa5;
+}
+
+.clear-search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+}
+
+.clear-search:hover {
+    color: #ff6b6b;
+}
+
+/* Фильтры */
+.filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 2px solid #e1e5eb;
+    border-radius: 4px;
+    background: white;
+    min-width: 150px;
+    font-size: 14px;
+    color: #333;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #4a6fa5;
+}
+
+/* Таблица */
+.table-container {
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    overflow-x: auto;
+    width: 100%;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /*min-width: 1200px;*/
+}
+
+thead {
+    background: #4a6fa5;
+    color: white;
+}
+
+th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 2px solid #3a5a80;
+    position: relative;
+    white-space: nowrap;
+}
+
+th.sortable {
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+th.sortable:hover {
+    background: #3a5a80;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sort-arrow {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e1e5eb;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* Стили для статусов */
+.status-working {
+    background: #d4edda !important;
+    color: #155724 !important;
+    font-weight: 500;
+}
+
+.status-planned {
+    background: #fff3cd !important;
+    color: #856404 !important;
+    font-weight: 500;
+}
+
+.status-temporary_off {
+    background: #ffeaa7 !important;
+    color: #8a4b08 !important;
+    font-weight: 500;
+}
+
+.status-disabled {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    font-weight: 500;
+}
+
+.status-online {
+    background: #d0e6ff !important;
+    color: #004085 !important;
+    font-weight: 500;
+}
+
+/* Ссылки онлайн */
+.online-link {
+    color: #4a6fa5;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.online-link:hover {
+    text-decoration: underline;
+}
+
+/* Редактирование ячеек */
+.edit-cell {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.edit-cell input {
+    flex: 1;
+    padding: 6px 8px;
+    border: 2px solid #4a6fa5;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.edit-cell input:focus {
+    outline: none;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 2px;
+}
+
+.save-btn, .cancel-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.save-btn {
+    background: #28a745;
+    color: white;
+}
+
+.cancel-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #218838;
+}
+
+.cancel-btn:hover {
+    background: #c82333;
+}
+
+/* Нет данных */
+.no-data {
+    text-align: center;
+    padding: 40px !important;
+    color: #666;
+    font-style: italic;
+}
+
+/* Пагинация */
+.pagination {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pagination-info {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Загрузка */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4a6fa5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .radio-table {
+        padding: 10px;
+    }
+    
+    table {
+        min-width: 1000px;
+    }
+    
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-select {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .toolbar {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .toolbar-left {
+        justify-content: center;
+    }
+    
+    .search-panel {
+        padding: 15px;
+    }
+}

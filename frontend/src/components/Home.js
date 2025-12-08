@@ -113,7 +113,7 @@ const Home = () => {
                             {recentChanges.map(station => (
                                 <div key={station.id} className='change-item'>
                                     <div className='station-info'>
-                                        <span className='station-name'>{station.station}</span>
+                                        <span className='station-name'>{station.station} {station.local_station}</span>
                                         <span className='frequency'>{station.freq} МГц</span>
                                     </div>
                                     <div className='change-details'>
